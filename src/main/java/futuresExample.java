@@ -13,7 +13,7 @@ public class FuturesExample {
         static String asyncSlowConcat(final String str1, final String str2) {
             CompletionStage<String> reverse1 = slowReverseFuture(str1);
             return slowReverseFuture(str2)
-                    .thenCombineAsync(reverse1, (s2, s1) -> s1.concat(s2))
+                    .thenCombine(reverse1, (s2, s1) -> s1.concat(s2))
                     .toCompletableFuture().join();
         }
 
